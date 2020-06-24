@@ -75,6 +75,11 @@ curl -X PUT -H "Content-Type: application/json" -d '{"value":"19", "currency_cod
 
 Will set the price of product 99 to 19 in the pricing database.
 
+
+## Setting the db
+The file resources/application.properties contains the property set.up. If set.up=true is in the file then the price database will be reset each time the server is started, if set.up=false, then the db will not be reset.
+
+
 ## Some future enhancements for use in a production environment
 ### Security
 * https--The server should be secured via a proper certificate so that it can be contacted via https.
