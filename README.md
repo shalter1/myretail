@@ -24,20 +24,55 @@ You will need Java 1.8 and maven 3.6 or later installed upon your system.
 Maven can be downloaded from: https://maven.apache.org/download.cgi
 Follow the instructions at: https://docs.mongodb.com/manual/administration/install-community/ to install mongodb to your system and then run with mongod
 
-clone or copy this repository to your system ()
+clone or copy this repository to your system (git clone https://github.com/shalter1/myretail.git)
 
 
 ## Usage
 
-```python
-import foobar
+cd [your repository path]/myretail/myRetail
 
-foobar.pluralize('word') # returns 'words'
-foobar.pluralize('goose') # returns 'geese'
-foobar.singularize('phenomena') # returns 'phenomenon'
-```
+Start the server by:
+./mvnw spring-boot:run
 
-## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+You can now use your tool of choice to send REST requests to the server.
+For example:
 
-Please make sure to update tests as appropriate.
+### GET request
+curl -X GET -H "Content-Type: application/json" "http://localhost:8080/products/13860428" 
+JSON result:
+{"id":13860428,"name":"The Big Lebowski (Blu-ray)","current_price":{"value":13.49,"currency_code":"USD"}}
+
+### PUT request
+curl -X PUT -H "Content-Type: application/json" -d '{"value":"19", "currency_code":"USD"}' "http://localhost:8080/products/13860428"
+
+Will change the price of product 13860428 to 19
+
+### GET request on unknown product
+curl -X GET -H "Content-Type: application/json" "http://localhost:8080/products/99"
+
+returns
+Product 99 not found
+
+### GET request on invalid product id
+curl -X GET -H "Content-Type: application/json" "http://localhost:8080/products/99a"
+
+returns
+Malformed JSON request: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Integer'; nested exception is java.lang.NumberFormatException: For input string: "99a"
+
+### GET request on product without pricing information
+curl -X GET -H "Content-Type: application/json" "http://localhost:8080/products/12954218"
+
+returns
+
+{"id":12954218,"name":"Kraft Macaroni &#38; Cheese Dinner Original - 7.25oz","current_price":{"value":-1.0,"currency_code":""}}
+
+A value of -1 and empty currency code is used to indicate a non-priced product.
+
+### PUT request on non-existent product
+curl -X PUT -H "Content-Type: application/json" -d '{"value":"19", "currency_code":"USD"}' "http://localhost:8080/products/99"
+
+Will set the price of product 99 to 19 in the pricing database.
+
+
+
+
