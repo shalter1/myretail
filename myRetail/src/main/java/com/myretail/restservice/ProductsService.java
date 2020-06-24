@@ -44,6 +44,9 @@ public class ProductsService {
         return price.get();
     }
 
+    /*
+     * This method interacts with the external web service to retrieve the product name.
+     */
     private ProductName getProductName(Integer id) {
         String url = String.format(productURL, id);
 
