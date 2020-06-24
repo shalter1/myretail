@@ -16,7 +16,8 @@ An example curl put request is:
 * Java 1.8
 * Spring Boot 2.3.1
 * Maven 3.6.3 
-* mongodb 
+* mongodb 4.2
+* github
 
 ## Installation
 
