@@ -9,14 +9,14 @@ The name is retrieved from  http://redsky.target.com/v2/pdp/tcin/{id}?excludes=t
 Reads pricing information from a NoSQL data store and combines it with the product id and name from the HTTP request into a single response.  
 Accepts an HTTP PUT request at the same path (/products/{id}), containing a JSON request body similar to the GET response, and updates the product’s price in the data store.  
 An example curl put request is: 
-curl -X PUT -H "Content-Type: application/json" -d '{"value":"19", "currency_code":"USD"}' "http://localhost:8080/products/13860428"
+'curl -X PUT -H "Content-Type: application/json" -d '{"value":"19", "currency_code":"USD"}' "http://localhost:8080/products/13860428"''
 
 ## Technolgies
 
-Java 1.8
-Spring Boot 2.3.1
-Maven 3.6.3 
-mongodb 
+* Java 1.8
+* Spring Boot 2.3.1
+* Maven 3.6.3 
+* mongodb 
 
 ## Installation
 
