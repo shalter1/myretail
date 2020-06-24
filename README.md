@@ -91,6 +91,11 @@ Will set the price of product 99 to 19 in the pricing database.
 * Add versioning to the API (/v2/products)
 * Add in protection versus attacks such as Denial of Service
 
+## Unit testing
+A junit tet can be run by:
+cd [your repository path]/myretail/myRetail
+./mvnw test 
+
 
 
 
