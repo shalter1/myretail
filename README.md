@@ -74,6 +74,23 @@ curl -X PUT -H "Content-Type: application/json" -d '{"value":"19", "currency_cod
 
 Will set the price of product 99 to 19 in the pricing database.
 
+## Some future enhancements for use in a production environment
+### Security
+* https--The server should be secured via a proper certificate so that it can be contacted via https.
+* User Authentication--The capability for users to authenticate themselves to the server should be added
+* User Authorization--The capability for differing access for users should be added. For example, not everyone needs to be able to change pricing information.
+* Once security is added, a number of penetration tests will need to be performed.
+
+### Performance
+* Various mechanisms may be added to cache data, such as memcached
+* The application might be distributed via load balancing
+* The mongo db (pricing) will need to be secured
+
+### Other
+* Add versioning to the API (/v2/products)
+* Add in protection versus attacks such as Denial of Service
+
+
 
 
 
