@@ -20,6 +20,8 @@ import java.util.Optional;
 public class ProductsService {
     Logger logger = LoggerFactory.getLogger(ProductsService.class);
 
+    private RestTemplate restTemplate = new RestTemplate();
+
     @Autowired
     private PriceRepository priceRepository;
 
@@ -50,7 +52,6 @@ public class ProductsService {
     private ProductName getProductName(Integer id) {
         String url = String.format(productURL, id);
 
-        RestTemplate restTemplate = new RestTemplate();
         ProductName result = null;
 
         ResponseEntity<String> response = null;
